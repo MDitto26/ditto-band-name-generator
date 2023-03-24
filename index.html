@@ -47,14 +47,21 @@
   <button onclick="generateName()">Generate</button>
   <p id="bandName"></p>
 
-  <script>
-    function generateName() {
-      var adjectives = ["Electric", "Fiery", "Psychedelic", "Ethereal", "Grungy", "Funky", "Soulful", "Screaming", "Enchanted", "Mysterious", "Rebellious", "Dangerous", "Radiant", "Chaos", "Epic", "Legendary", "Incredible", "Nostalgic", "Cosmic", "Thunderous", "Furious", "Trippy", "Serene", "Hypnotic"];
-      var nouns = ["Riot", "Revolution", "Rapture", "Reverie", "Rebellion", "Cataclysm", "Apocalypse", "Vortex", "Abyss", "Infinity", "Horizon", "Mirage", "Phantasm", "Dreamscape", "Journey", "Odyssey", "Maelstrom", "Conduit", "Eclipse", "Symphony", "Melody", "Soul", "Sound", "Echo"];
-      var adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-      var noun = nouns[Math.floor(Math.random() * nouns.length)];
-      document.getElementById("bandName").innerHTML = adjective + " " + noun;
-    }
-  </script>
+<script>
+function generateName() {
+  var adjectives = ["Electric", "Fire", "Psycho", "Ethereal", "Grunge", "Funk", "Soul", "Screaming", "Enchanted", "Mystery", "Rebellious", "Danger", "Radiant", "Chaos", "Epic", "Legendary", "Backwards", "Nostalgic", "Cosmic", "Thunder", "Furious", "Trippy", "Serene", "Hypnotic", "Squishy", "Salmon", "Gooey", "Zany", "Fuzzy", "Crazy", "Internet", "Cheesy", "Wacky", "Sick", "Spooky", "House", "Quirky", "Whimsy"];
+  var nouns = ["Riot", "Revolution", "Rapture", "Reverie", "Rebellion", "Cataclysm", "Apocalypse", "Vortex", "Abyss", "Infinity", "Horizon", "Mirage", "Phantasm", "Dreamscape", "Journey", "Odyssey", "Maelstrom", "Conduit", "Eclipse", "Symphony", "Melody", "Soul", "Sound", "Echo", "Banana", "Pajamas", "Sausage", "Pickle", "Donut", "Unicorn", "Noodle", "Taco", "Penguin", "Llama", "Shark", "Pirate", "Rainbow", "Ninja", "Dragon", "Alien", "Sasquatch", "Robot", "Zombie", "Gorilla", "Octopus", "Sloth", "Yeti", "Werewolf", "Vampire"];
+  var name = "";
+  if (Math.random() < 0.2) { // 10% chance of starting with "The"
+    name += "The ";
+  }
+  if (Math.random() < 0.5) { // 50% chance of two words
+    name += adjectives[Math.floor(Math.random() * adjectives.length)] + " ";
+  }
+  name += adjectives[Math.floor(Math.random() * adjectives.length)] + " " + nouns[Math.floor(Math.random() * nouns.length)];
+  document.getElementById("bandName").innerHTML = name;
+}
+</script>
+
 </body>
 </html>
