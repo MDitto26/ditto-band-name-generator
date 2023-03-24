@@ -13,39 +13,43 @@
       padding: 0;
       text-align: center;
     }
-    h1 {
-      font-size: 48px;
-      margin-top: 50px;
-    }
     img {
       margin-top: 50px;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
     p {
-      font-size: 24px;
-      margin-top: 30px;
+      font-size: 20px;
+      margin-top: 50px;
+    }
+    .bandname {
+      font-size: 48px;
+      margin-top: 50px;
+      font-weight: bold;
+      text-shadow: 3px 3px #7F56D9;
     }
     button {
-      background-color: #1abc9c;
+      background-color: #7F56D9;
       border: none;
       border-radius: 4px;
       color: #ffffff;
       font-family: Poppins, sans-serif;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 30px;
       margin-top: 30px;
       padding: 10px 20px;
       transition: background-color 0.3s ease;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     button:hover {
-      background-color: #148f77;
+      background-color: #6c3fa8;
     }
   </style>
 </head>
 <body>
   <img src="https://i.imgur.com/MtheiEP.png" alt="Ditto Music logo">
-  <p>Click the button to generate a band name:</p>
+  <p><strong>Hit the button</strong> to generate a band name:</p>
   <button onclick="generateName()">Generate</button>
-  <p id="bandName"></p>
+  <p class="bandname" id="bandName"></p>
 
 <script>
 function generateName() {
