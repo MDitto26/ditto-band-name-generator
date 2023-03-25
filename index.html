@@ -13,22 +13,30 @@
       padding: 0;
       text-align: center;
     }
+
     img {
       margin-top: 50px;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-      width: 22%;
-      height: 22%;
+      max-width: 30%;
     }
+
     p {
       font-size: 20px;
-      margin-top: 30px;
+      margin-top: 5px;
     }
+
     .bandname {
-      font-size: 40px;
-      margin-top: 40px;
+      font-size: 35px;
+      margin-top: 50px;
       font-weight: bold;
       text-shadow: 3px 3px #7F56D9;
+      animation: bandname-static 0.5s ease-in-out;
     }
+
+    .bandname.animate {
+      animation: bandname-animate 0.5s ease-in-out;
+    }
+
     button {
       background-color: #7F56D9;
       border: none;
@@ -36,38 +44,87 @@
       color: #ffffff;
       font-family: Poppins, sans-serif;
       cursor: pointer;
-      font-size: 28px;
-      margin-top: 30px;
+      font-size: 25px;
+      margin-top: 25px;
       padding: 10px 20px;
-      transition: background-color 0.3s ease;
+      animation: pulse 3s infinite;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
+
     button:hover {
-      background-color: #6c3fa8;
+      animation: none;
+      background-color: #7F56D9;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes bandname-static {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes bandname-animate {
+      0% {
+        transform: scale(0.7);
+      }
+      50% {
+        transform: scale(1.03);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   </style>
 </head>
+
 <body>
   <img src="https://i.imgur.com/MtheiEP.png" alt="Ditto Music logo">
-  <p><strong>Hit the button</strong><br>to generate a band name.</p>
+  <p><strong>Band Name </strong>Generator</p>
   <button onclick="generateName()">Generate</button>
   <p class="bandname" id="bandName"></p>
 
 <script>
 function generateName() {
-  var adjectives = ["Electric", "Fire", "Psycho", "Ethereal", "Grunge", "Funk", "Soul", "Screaming", "Enchanted", "Mystery", "Rebellious", "Danger", "Radiant", "Chaos", "Epic", "Legendary", "Backwards", "Nostalgic", "Cosmic", "Thunder", "Furious", "Trippy", "Serene", "Hypnotic", "Squishy", "Salmon", "Gooey", "Zany", "Fuzzy", "Crazy", "Internet", "Cheesy", "Wacky", "Sick", "Spooky", "House", "Quirky", "Whimsy"];
-  var nouns = ["Riot", "Revolution", "Rapture", "Reverie", "Rebellion", "Cataclysm", "Apocalypse", "Vortex", "Abyss", "Infinity", "Horizon", "Mirage", "Phantasm", "Dreamscape", "Journey", "Odyssey", "Maelstrom", "Conduit", "Eclipse", "Symphony", "Melody", "Soul", "Sound", "Echo", "Banana", "Pajamas", "Sausage", "Pickle", "Donut", "Unicorn", "Noodle", "Taco", "Penguin", "Llama", "Shark", "Pirate", "Rainbow", "Ninja", "Dragon", "Alien", "Sasquatch", "Robot", "Zombie", "Gorilla", "Octopus", "Sloth", "Yeti", "Werewolf", "Vampire"];
+  var adjectives = ["Electric", "Fire", "Psycho", "Ethereal", "Grunge", "Funk", "Soul", "Screaming", "Enchanted", "Mystery", "Rebellious", "Danger", "Radiant", "Chaos", "Epic", "Legendary", "Backwards", "Nostalgic", "Cosmic", "Thunder", "Furious", "Trippy", "Serene", "Hypnotic", "Sock", "Salmon", "Gooey", "Zany", "Fuzzy", "Crazy", "Internet", "Cheesy", "Wacky", "Sick", "Spooky", "House", "Quirky", "Dead", "Neon", "Raging", "Glitter", "Savage", "Sonic", "Cosmic", "Fierce", "Electric", "Futuristic", "Chromatic", "Chaotic", "Intense", "Luminous", "Majestic", "Mythical", "Radiant", "Resilient", "Roaring", "Spooky", "Sublime", "Timeless", "Ultraviolet", "Vibrant", "Vicious", "Whirlwind", "Wicked", "Zenith"];
+  var nouns = ["Riot", "Revolution", "Rapture", "Reverie", "Rebellion", "Cataclysm", "Apocalypse", "Vortex", "Abyss", "Infinity", "Horizon", "Mirage", "Phantasm", "Dreamscape", "Journey", "Odyssey", "Maelstrom", "Conduit", "Eclipse", "Symphony", "Melody", "Soul", "Sound", "Echo", "Banana", "Pajamas", "Sausage", "Pickle", "Donut", "Unicorn", "Noodle", "Taco", "Penguin", "Llama", "Shark", "Pirate", "Rainbow", "Ninja", "Dragon", "Alien", "Sasquatch", "Robot", "Zombie", "Gorilla", "Octopus", "Sloth", "Yeti", "Werewolf", "Dust", "Rioters", "Warriors", "Rebels", "Seekers", "Explorers", "Adventurers", "Gladiators", "Dreamers", "Icons", "Luminaries", "Mavericks", "Nomads", "Pioneers", "Prophets", "Renegades", "Revolutionaries", "Specters", "Storms", "Titans", "Voyagers", "Wanderers", "Wildfires", "Wizards", "Zealots"];
   var name = "";
-  if (Math.random() < 0.2) { // 10% chance of starting with "The"
+  if (Math.random() < 0.3) { // 10% chance of starting with "The"
     name += "The ";
   }
   if (Math.random() < 0.5) { // 50% chance of two words
     name += adjectives[Math.floor(Math.random() * adjectives.length)] + " ";
   }
   name += adjectives[Math.floor(Math.random() * adjectives.length)] + " " + nouns[Math.floor(Math.random() * nouns.length)];
-  document.getElementById("bandName").innerHTML = name;
+  var bandNameElem = document.getElementById("bandName");
+  bandNameElem.classList.remove("animate"); // Remove animate class
+  setTimeout(function() { // Wait a short time before updating content and adding animate class again
+    bandNameElem.innerHTML = name;
+    bandNameElem.classList.add("animate");
+  }, 50);
 }
-</script>
 
-</body>
-</html>
+var button = document.querySelector("button");
+button.addEventListener("click", function() {
+  generateName();
+  button.classList.add("pulse");
+  setTimeout(function() {
+    button.classList.remove("pulse");
+  }, 3000);
+});
+</script>
